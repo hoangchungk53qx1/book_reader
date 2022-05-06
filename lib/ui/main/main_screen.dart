@@ -19,6 +19,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
+      onWillPop: () => DialogExitApp().showExitDialog(context),
       child: Scaffold(
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
@@ -43,7 +44,6 @@ class _MainScreenState extends State<MainScreen> {
           currentIndex: _page,
         ),
       ),
-      onWillPop: DialogExitApp().showExitDialog(context),
     );
   }
 
@@ -61,9 +61,9 @@ class _MainScreenState extends State<MainScreen> {
 
  void onTappedItem(int page) => _pageController.jumpToPage(page);
 
-  onPageChange(int page) {
+  void onPageChange(int page) {
     setState(() {
-      _page = page;
+      _page = page ;
     });
   }
 }
