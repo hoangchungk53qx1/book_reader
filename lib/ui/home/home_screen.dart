@@ -1,5 +1,7 @@
 import 'package:book_reader/components/body_builder.dart';
 import 'package:book_reader/components/book_card_builder.dart';
+import 'package:book_reader/components/category_card_builder.dart';
+import 'package:book_reader/components/recent_card_builder.dart';
 import 'package:book_reader/model/CategoryFeed.dart';
 import 'package:book_reader/utils/const.dart';
 import 'package:book_reader/viewmodel/home_provider.dart';
@@ -57,9 +59,9 @@ class _HomeScreenState extends State<HomeScreen>
             _buildSectionTitle("Popular"),
             _buildSectionNews(homeProvider),
             _buildSectionTitle("Category"),
-            _buildSectionNews(homeProvider),
-            _buildSectionTitle("Recent"),
-            _buildSectionNews(homeProvider)
+            _buildCategorySection(homeProvider),
+            _buildSectionTitle("Recently"),
+            _buildRecentSection(homeProvider)
           ],
         ),
         onRefresh: () => homeProvider.getRemoteNews());
@@ -67,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   _buildSectionTitle(String title) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40.0),
+      padding: const EdgeInsets.symmetric(horizontal: 25.0,vertical: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -106,19 +108,47 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   _buildCategorySection(HomeProvider homeProvider) {
-    return Container(
+    return SizedBox(
       height: 50.0,
       child: Center(
         child: ListView.builder(
-          itemCount: homeProvider.topNews.feed?.entry?.length ?? 0,
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          itemCount: homeProvider.topNews.feed?.link?.length ?? 0,
           shrinkWrap: false,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return
+            if (index < 10) {
+              return const SizedBox();
+            }
+            Link? link = homeProvider.topNews.feed?.link![index];
+            return Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
+              child: CategoryCardBuilder(
+                categoryTitle: '${link?.title}',
+              ),
+            );
           },
         ),
       ),
     );
+  }
+
+  _buildRecentSection(HomeProvider homeProvider) {
+    return ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        shrinkWrap: true,
+        itemCount: homeProvider.recentNews.feed?.entry?.length ?? 0,
+        itemBuilder: (context, index) {
+          Entry? entry = homeProvider.recentNews.feed?.entry![index];
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+            child: RecentCardBuilder(
+              entry: entry,
+            ),
+          );
+        });
   }
 
   @override

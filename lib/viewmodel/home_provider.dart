@@ -15,6 +15,7 @@ class HomeProvider with ChangeNotifier {
     setApiStatus(ApiStatus.loading);
     try {
       setTopNews(await apiConnect.getCategoryByUrl(ApiConnect.popular));
+      setRecentNews(await apiConnect.getCategoryByUrl(ApiConnect.recent));
       setApiStatus(ApiStatus.loaded);
     } catch (e) {
       checkError(e);
@@ -36,6 +37,11 @@ class HomeProvider with ChangeNotifier {
 
   setTopNews(value) {
     topNews = value;
+    notifyListeners();
+  }
+
+  setRecentNews(value) {
+    recentNews = value;
     notifyListeners();
   }
 }

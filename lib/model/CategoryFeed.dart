@@ -235,7 +235,9 @@ class Link {
     data['rel'] = rel;
     data['type'] = type;
     data['href'] = href;
-    data['title'] = title;
+    if(title != null){
+      data['title'] = title;
+    }
     data['opds:activeFacet'] = opdsActiveFacet;
     data['opds:facetGroup'] = opdsFacetGroup;
     data['thr:count'] = thrCount;
