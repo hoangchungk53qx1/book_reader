@@ -28,7 +28,7 @@ class BodyBuilder extends StatelessWidget {
       case ApiStatus.error:
         return ErrorBuilder(refreshCallBack: reload, isConnect: false);
       case ApiStatus.connectError:
-
+        return ErrorBuilder(refreshCallBack: reload, isConnect: true);
       default:
         return const LoadingBuilder();
     }

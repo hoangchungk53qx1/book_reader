@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../viewmodel/explore_provider.dart';
 
 class ExploreScreen extends StatefulWidget {
@@ -19,7 +18,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
           return Scaffold(appBar: AppBar(
             centerTitle: true,
             title: const Text(
-              "Constants.appName",
+              "Explore",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             ),
           ),

@@ -2,6 +2,7 @@ import 'package:book_reader/model/CategoryFeed.dart';
 import 'package:book_reader/utils/api_status.dart';
 import 'package:book_reader/utils/check_connect.dart';
 import 'package:book_reader/utils/remote_connect.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class HomeProvider with ChangeNotifier {
