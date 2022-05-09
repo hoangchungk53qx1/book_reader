@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:book_reader/model/CategoryFeed.dart';
+import 'package:book_reader/model/category_feed.dart';
 import 'package:dio/dio.dart';
 import 'package:xml2json/xml2json.dart';
 

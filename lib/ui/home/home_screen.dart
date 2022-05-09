@@ -2,7 +2,7 @@ import 'package:book_reader/components/body_builder.dart';
 import 'package:book_reader/components/book_card_builder.dart';
 import 'package:book_reader/components/category_card_builder.dart';
 import 'package:book_reader/components/recent_card_builder.dart';
-import 'package:book_reader/model/CategoryFeed.dart';
+import 'package:book_reader/model/category_feed.dart';
 import 'package:book_reader/utils/const.dart';
 import 'package:book_reader/viewmodel/home_provider.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   _buildSectionTitle(String title) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0,vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen>
         itemBuilder: (context, index) {
           Entry? entry = homeProvider.topNews.feed?.entry![index];
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5.0,vertical: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
             child: BookCardBuilder(
               img: entry?.link![1].href as String,
               entry: entry,

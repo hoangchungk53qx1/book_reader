@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:book_reader/components/custom_alert.dart';
 import 'package:flutter/material.dart';
 
+import '../../utils/const.dart';
+
 class DialogExitApp {
   showExitDialog(BuildContext context) {
     showDialog(
@@ -14,51 +16,56 @@ class DialogExitApp {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
-            children: [
+            children: <Widget>[
               const SizedBox(height: 15.0),
-              const Text(
-                "Book Reader",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+              Text(
+                Constants.appName,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0,
+                ),
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 25.0),
               const Text(
-                "Are you sure quit app !",
-                style: TextStyle(fontWeight: FontWeight.normal, fontSize: 15.0),
+                'Are you sure you want to quit????',
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14.0,
+                ),
               ),
               const SizedBox(height: 40.0),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
                   SizedBox(
-                    height: 40,
-                    width: 130,
+                    height: 40.0,
+                    width: 130.0,
                     child: OutlinedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
                       child: Text(
-                        "No",
+                        'No',
                         style: TextStyle(
-                            color: Theme.of(context).colorScheme.secondary),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                          const Color(0xFFFFFFFF),
+                          color: Theme.of(context).colorScheme.secondary,
                         ),
                       ),
+                      onPressed: () => Navigator.pop(context),
                     ),
                   ),
                   SizedBox(
-                    height: 40,
-                    width: 130,
+                    height: 40.0,
+                    width: 130.0,
                     child: ElevatedButton(
-                      child: const Text("Yes"),
-                      onPressed: exit(0),
+                      child: const Text(
+                        'Yes',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      onPressed: () => exit(0),
                     ),
-                  )
+                  ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 20.0),
             ],
           ),
         ),

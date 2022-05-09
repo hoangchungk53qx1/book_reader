@@ -46,25 +46,25 @@ class Feed {
 
   Feed(
       {this.xmlLang,
-        this.xmlns,
-        this.xmlnsDcterms,
-        this.xmlnsThr,
-        this.xmlnsApp,
-        this.xmlnsOpensearch,
-        this.xmlnsOpds,
-        this.xmlnsXsi,
-        this.xmlnsOdl,
-        this.xmlnsSchema,
-        this.id,
-        this.title,
-        this.updated,
-        this.icon,
-        this.author,
-        this.link,
-        this.opensearchTotalResults,
-        this.opensearchItemsPerPage,
-        this.opensearchStartIndex,
-        this.entry});
+      this.xmlns,
+      this.xmlnsDcterms,
+      this.xmlnsThr,
+      this.xmlnsApp,
+      this.xmlnsOpensearch,
+      this.xmlnsOpds,
+      this.xmlnsXsi,
+      this.xmlnsOdl,
+      this.xmlnsSchema,
+      this.id,
+      this.title,
+      this.updated,
+      this.icon,
+      this.author,
+      this.link,
+      this.opensearchTotalResults,
+      this.opensearchItemsPerPage,
+      this.opensearchStartIndex,
+      this.entry});
 
   Feed.fromJson(Map<String, dynamic> json) {
     xmlLang = json['xml:lang'];
@@ -81,8 +81,7 @@ class Feed {
     title = json['title'] != null ? Id.fromJson(json['title']) : null;
     updated = json['updated'] != null ? Id.fromJson(json['updated']) : null;
     icon = json['icon'] != null ? Id.fromJson(json['icon']) : null;
-    author =
-    json['author'] != null ? Author.fromJson(json['author']) : null;
+    author = json['author'] != null ? Author.fromJson(json['author']) : null;
     if (json['link'] != null) {
       link = <Link>[];
       json['link'].forEach((v) {
@@ -213,12 +212,12 @@ class Link {
 
   Link(
       {this.rel,
-        this.type,
-        this.href,
-        this.title,
-        this.opdsActiveFacet,
-        this.opdsFacetGroup,
-        this.thrCount});
+      this.type,
+      this.href,
+      this.title,
+      this.opdsActiveFacet,
+      this.opdsFacetGroup,
+      this.thrCount});
 
   Link.fromJson(Map<String, dynamic> json) {
     rel = json['rel'];
@@ -235,7 +234,7 @@ class Link {
     data['rel'] = rel;
     data['type'] = type;
     data['href'] = href;
-    if(title != null){
+    if (title != null) {
       data['title'] = title;
     }
     data['opds:activeFacet'] = opdsActiveFacet;
@@ -261,17 +260,17 @@ class Entry {
 
   Entry(
       {this.title,
-        this.id,
-        this.author,
-        this.published,
-        this.updated,
-        this.dctermsLanguage,
-        this.dctermsPublisher,
-        this.dctermsIssued,
-        this.summary,
-        this.category,
-        this.link,
-        this.schemaSeries});
+      this.id,
+      this.author,
+      this.published,
+      this.updated,
+      this.dctermsLanguage,
+      this.dctermsPublisher,
+      this.dctermsIssued,
+      this.summary,
+      this.category,
+      this.link,
+      this.schemaSeries});
 
   Entry.fromJson(Map<String, dynamic> json) {
     title = json['title'] != null ? Id.fromJson(json['title']) : null;
@@ -285,7 +284,7 @@ class Entry {
     }
 
     published =
-    json['published'] != null ? Id.fromJson(json['published']) : null;
+        json['published'] != null ? Id.fromJson(json['published']) : null;
     updated = json['updated'] != null ? Id.fromJson(json['updated']) : null;
     dctermsLanguage = json[r'dcterms$language'] != null
         ? Id.fromJson(json[r'dcterms$language'])

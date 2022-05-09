@@ -3,13 +3,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 @immutable
+// ignore: must_be_immutable
 class CustomAlert extends StatelessWidget {
   late final Widget child;
   late double deviceWidth;
   late double deviceHeight;
   late double dialogHeight;
 
-  CustomAlert({Key? key,required this.child}) : super(key: key);
+  CustomAlert({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

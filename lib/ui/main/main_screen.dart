@@ -25,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
           physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,
           onPageChanged: onPageChange,
-          children: const [HomeScreen(),ExploreScreen(),SettingScreen()],
+          children: const [HomeScreen(), ExploreScreen(), SettingScreen()],
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Theme.of(context).primaryColor,
@@ -59,11 +59,11 @@ class _MainScreenState extends State<MainScreen> {
     _pageController = PageController(initialPage: 0);
   }
 
- void onTappedItem(int page) => _pageController.jumpToPage(page);
+  void onTappedItem(int page) => _pageController.jumpToPage(page);
 
   void onPageChange(int page) {
     setState(() {
-      _page = page ;
+      _page = page;
     });
   }
 }

@@ -1,7 +1,7 @@
-import 'package:book_reader/theme/theme_config.dart';
 import 'package:book_reader/ui/splash.dart';
 import 'package:book_reader/utils/const.dart';
 import 'package:book_reader/viewmodel/app_providers.dart';
+import 'package:book_reader/viewmodel/detail_provider.dart';
 import 'package:book_reader/viewmodel/explore_provider.dart';
 import 'package:book_reader/viewmodel/home_provider.dart';
 import 'package:book_reader/viewmodel/setting_provider.dart';
@@ -17,6 +17,7 @@ void main() {
       ChangeNotifierProvider(create: (_) => SettingProvider()),
       ChangeNotifierProvider(create: (_) => ExploreProvider()),
       ChangeNotifierProvider(create: (_) => ExploreProvider()),
+      ChangeNotifierProvider(create: (_) => DetailProvider()),
     ],
     child: const MyApp(),
   ));
@@ -44,10 +45,7 @@ class MyApp extends StatelessWidget {
   }
 
   ThemeData themeData(ThemeData themeData) {
-    return themeData.copyWith(textTheme: GoogleFonts.sourceCodeProTextTheme(
-        themeData.textTheme
-    ));
+    return themeData.copyWith(
+        textTheme: GoogleFonts.sourceCodeProTextTheme(themeData.textTheme));
   }
 }
-
-

@@ -1,4 +1,4 @@
-import 'package:book_reader/model/CategoryFeed.dart';
+import 'package:book_reader/model/category_feed.dart';
 import 'package:book_reader/utils/api_status.dart';
 import 'package:book_reader/utils/check_connect.dart';
 import 'package:book_reader/utils/remote_connect.dart';

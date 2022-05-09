@@ -1,5 +1,6 @@
 import 'package:book_reader/components/loading_builder.dart';
-import 'package:book_reader/model/CategoryFeed.dart';
+import 'package:book_reader/model/category_feed.dart';
+import 'package:book_reader/ui/detail/detail_book.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -12,7 +13,8 @@ class BookCardBuilder extends StatelessWidget {
       : super(key: key);
   static const uuid = Uuid();
   static final String imgTag = uuid.v4();
-
+  static final String titleTag = uuid.v4();
+  static final String authorTag = uuid.v4();
   @override
   Widget build(BuildContext context) => _buildBody(context);
 
@@ -27,6 +29,16 @@ class BookCardBuilder extends StatelessWidget {
         ),
         elevation: 4.0,
         child: InkWell(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (BuildContext context) {
+              return DetailBookBuilder(
+                  entry: entry,
+                  imgTag: imgTag,
+                  titleTag: titleTag,
+                  authorTag: authorTag);
+            }));
+          },
           borderRadius: const BorderRadius.all(
             Radius.circular(12.0),
           ),
