@@ -270,7 +270,10 @@ class _DetailBookState extends State<DetailBookBuilder> {
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (BuildContext context, int index) {
           Entry? entry = detailProvider.categoryFeed.feed?.entry![index];
-          return RecentCardBuilder(entry: entry as Entry);
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: RecentCardBuilder(entry: entry as Entry),
+          );
         },
       );
     }
