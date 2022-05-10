@@ -45,7 +45,7 @@ class CustomAlert extends StatelessWidget {
                     ),
                   )
                 ],
-              ))
+              ),)
             ],
           ),
         ));

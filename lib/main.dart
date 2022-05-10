@@ -5,22 +5,26 @@ import 'package:book_reader/viewmodel/detail_provider.dart';
 import 'package:book_reader/viewmodel/explore_provider.dart';
 import 'package:book_reader/viewmodel/home_provider.dart';
 import 'package:book_reader/viewmodel/setting_provider.dart';
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (_) => AppProvider()),
-      ChangeNotifierProvider(create: (_) => HomeProvider()),
-      ChangeNotifierProvider(create: (_) => SettingProvider()),
-      ChangeNotifierProvider(create: (_) => ExploreProvider()),
-      ChangeNotifierProvider(create: (_) => ExploreProvider()),
-      ChangeNotifierProvider(create: (_) => DetailProvider()),
-    ],
-    child: const MyApp(),
-  ));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AppProvider()),
+        ChangeNotifierProvider(create: (_) => HomeProvider()),
+        ChangeNotifierProvider(create: (_) => SettingProvider()),
+        ChangeNotifierProvider(create: (_) => ExploreProvider()),
+        ChangeNotifierProvider(create: (_) => ExploreProvider()),
+        ChangeNotifierProvider(create: (_) => DetailProvider()),
+      ],
+      child: const MyApp()
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -33,7 +37,7 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, AppProvider appProvider, Widget? child) {
         return MaterialApp(
           key: appProvider.key,
-          debugShowCheckedModeBanner: true,
+          debugShowCheckedModeBanner: false,
           navigatorKey: appProvider.navigatorKey,
           title: Constants.appName,
           theme: themeData(appProvider.theme),
@@ -44,8 +48,6 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  ThemeData themeData(ThemeData themeData) {
-    return themeData.copyWith(
-        textTheme: GoogleFonts.sourceCodeProTextTheme(themeData.textTheme));
-  }
+  ThemeData themeData(ThemeData themeData) => themeData.copyWith(
+      textTheme: GoogleFonts.sourceCodeProTextTheme(themeData.textTheme));
 }
