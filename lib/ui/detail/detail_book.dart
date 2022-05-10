@@ -84,7 +84,7 @@ class _DetailBookState extends State<DetailBookBuilder> {
               const SizedBox(
                 height: 5.0,
               ),
-              _buildTitleDetail("Book Description "),
+              _buildTitleDetail("Book Description..."),
               _buildDivider(),
               const SizedBox(
                 height: 10.0,
