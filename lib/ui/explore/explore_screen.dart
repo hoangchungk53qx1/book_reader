@@ -38,6 +38,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
       apiStatus: homeProvider.apiStatus,
       reload: () => homeProvider.getRemoteNews(),
       child: ListView.builder(
+        shrinkWrap: true,
+        scrollDirection: Axis.vertical,
         itemCount: homeProvider.topNews.feed?.link?.length ?? 0,
         itemBuilder: (BuildContext context, int index) {
           Link? link = homeProvider.topNews.feed?.link![index];
