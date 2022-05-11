@@ -4,6 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
+import '../ui/detail/detail_book.dart';
+
 class RecentCardBuilder extends StatelessWidget {
   final Entry? entry;
 
@@ -18,6 +20,21 @@ class RecentCardBuilder extends StatelessWidget {
 
   _buildBody(BuildContext context) {
     return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) {
+              return DetailBookBuilder(
+                entry: entry,
+                imgTag: imgTag,
+                titleTag: titleTag,
+                authorTag: authorTag,
+              );
+            },
+          ),
+        );
+      },
       child: SizedBox(
         child: Row(
           children: [

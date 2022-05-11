@@ -82,7 +82,7 @@ class _DetailBookState extends State<DetailBookBuilder> {
               ),
               _buildHeaderDetail(detailprovider),
               const SizedBox(
-                height: 5.0,
+                height: 25.0,
               ),
               _buildTitleDetail("Book Description..."),
               _buildDivider(),
@@ -137,12 +137,12 @@ class _DetailBookState extends State<DetailBookBuilder> {
   _buildHeaderDetail(DetailProvider detailProvider) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            padding: const EdgeInsets.symmetric(horizontal: 0.0),
             child: Card(
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
@@ -168,46 +168,45 @@ class _DetailBookState extends State<DetailBookBuilder> {
           ),
           flex: 1,
         ),
+        const SizedBox(width: 10.0),
         Expanded(
-          child: Flexible(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                const SizedBox(
-                  height: 5.0,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              const SizedBox(
+                height: 5.0,
+              ),
+              Hero(
+                tag: widget.titleTag,
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: Text(widget.entry?.title?.t ?? ""),
                 ),
-                Hero(
-                  tag: widget.titleTag,
-                  child: Material(
-                    type: MaterialType.transparency,
-                    child: Text(widget.entry?.title?.t ?? ""),
-                  ),
+              ),
+              const SizedBox(
+                height: 5.0,
+              ),
+              Hero(
+                tag: widget.authorTag,
+                child: Text(
+                  widget.entry?.author?.name?.t ?? "",
+                  style: const TextStyle(
+                      fontSize: 15.0,
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(
-                  height: 5.0,
-                ),
-                Hero(
-                  tag: widget.authorTag,
-                  child: Text(
-                    widget.entry?.author?.name?.t ?? "",
-                    style: const TextStyle(
-                        fontSize: 15.0,
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                const SizedBox(
-                  height: 5.0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                  child: _buildCategoryHeader(
-                      detailProvider, widget.entry as Entry),
-                ),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 5.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                child:
+                    _buildCategoryHeader(detailProvider, widget.entry as Entry),
+              ),
+            ],
           ),
           flex: 2,
         )
@@ -220,13 +219,13 @@ class _DetailBookState extends State<DetailBookBuilder> {
       return const SizedBox();
     } else {
       return SizedBox(
-        height: entry.category!.length < 3 ? 55.0 : 95.0,
+        height: entry.category!.length < 3 ? 55.0 : 85.0,
         child: GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemCount: entry.category!.length > 4 ? 4 : entry.category!.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, childAspectRatio: 210 / 100),
+              crossAxisCount: 2, childAspectRatio: 210 / 80),
           itemBuilder: (BuildContext context, int index) {
             Category category = entry.category![index];
             return Padding(
