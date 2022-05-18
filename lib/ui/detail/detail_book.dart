@@ -31,7 +31,7 @@ class _DetailBookState extends State<DetailBookBuilder> {
   @override
   void initState() {
     super.initState();
-    SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<DetailProvider>(context, listen: false).getMoreAuthor(
           widget.entry?.author!.uri?.t!.replaceAll(r'\&lang=en', '') as String);
     });
@@ -141,6 +141,7 @@ class _DetailBookState extends State<DetailBookBuilder> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Expanded(
+          flex: 1,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 0.0),
             child: Card(
@@ -166,10 +167,10 @@ class _DetailBookState extends State<DetailBookBuilder> {
               ),
             ),
           ),
-          flex: 1,
         ),
         const SizedBox(width: 10.0),
         Expanded(
+          flex: 2,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,7 +209,6 @@ class _DetailBookState extends State<DetailBookBuilder> {
               ),
             ],
           ),
-          flex: 2,
         )
       ],
     );

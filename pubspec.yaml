@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   cached_network_image: ^3.2.0
   dio: ^4.0.6
-#  epub_viewer: ^0.2.5
+#  epub_viewer: ^0.2.5f
   flutter_icons:
     git: https://github.com/jibiel/flutter-icons
 
