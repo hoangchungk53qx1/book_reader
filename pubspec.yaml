@@ -50,7 +50,7 @@ dependencies:
   # flutter_share: ^2.0.0
   shared_preferences: ^2.0.13
   uuid: ^3.0.6
-  xml2json: ^5.3.2
+  xml2json: ^6.0.0
   device_preview: ^1.0.0
   dartx: any
 
